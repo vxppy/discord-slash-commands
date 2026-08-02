@@ -35,7 +35,7 @@ import { parseOptions } from './parseOptions.js';
 import type {
     VxppyCommandContext,
     VxppySlashCommandMetadata,
-} from './types.js';
+} from './types/exported.js';
 
 type SlashCommandState = 'root' | 'subcommand' | 'options';
 
