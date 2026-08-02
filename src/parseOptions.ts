@@ -27,7 +27,7 @@ const assign = <T>(
     }
 };
 
-export default async function parseOptions(
+export async function parseOptions(
     interaction: ChatInputCommandInteraction,
     shape: readonly OptionShape[],
 ) {

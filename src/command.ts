@@ -9,15 +9,15 @@ import type {
 
 import { SubCommand, SubCommandGroup } from './options/group/index.js';
 import {
-    StringOption,
-    IntegerOption,
-    BooleanOption,
-    NumberOption,
-    UserOption,
-    RoleOption,
-    ChannelOption,
-    MentionableOption,
     AttachmentOption,
+    BooleanOption,
+    ChannelOption,
+    IntegerOption,
+    MentionableOption,
+    NumberOption,
+    RoleOption,
+    StringOption,
+    UserOption,
 } from './options/value/index.js';
 
 import type {
@@ -30,15 +30,18 @@ import type {
 } from './types/shared.js';
 
 import KawaiiValidationError from './error.js';
-import type { KawaiiContext, KawaiiSlashCommandMetadata } from './types.js';
-import type { ApplicationCommandData, BaseOption } from './options/base.js';
-import parseOptions from './parseOptions.js';
+import type { ApplicationCommandData } from './options/base.js';
+import { parseOptions } from './parseOptions.js';
+import type {
+    VxppyCommandContext,
+    VxppySlashCommandMetadata,
+} from './types.js';
 
 type SlashCommandState = 'root' | 'subcommand' | 'options';
 
 export interface SlashCommandContext<TArgs> {
     interaction: ChatInputCommandInteraction;
-    ctx: KawaiiContext;
+    ctx: VxppyCommandContext;
     options: TArgs;
 }
 
@@ -118,7 +121,7 @@ export class KawaiiSlashCommand<
         return this;
     }
 
-    async execute<TCtx extends object = KawaiiContext>(
+    async execute<TCtx extends object = VxppyCommandContext>(
         interaction: ChatInputCommandInteraction,
         ctx: TCtx,
     ) {
@@ -494,7 +497,7 @@ export class KawaiiSlashCommand<
 }
 
 export const slashCommand = <
-    TMetadata extends object = KawaiiSlashCommandMetadata,
+    TMetadata extends object = VxppySlashCommandMetadata,
 >(data: {
     name: string;
     description: string;

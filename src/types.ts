@@ -1,2 +1,2 @@
-export interface KawaiiContext {}
-export interface KawaiiSlashCommandMetadata {}
+export interface VxppyCommandContext {}
+export interface VxppySlashCommandMetadata {}
