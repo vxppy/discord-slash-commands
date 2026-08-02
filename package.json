@@ -1,5 +1,5 @@
 {
-    "name": "@kawaii/slash-commands",
+    "name": "@vxppy/discord-slash-commands",
     "version": "0.0.1",
     "description": "A simple slash command builder lib",
     "license": "MIT",
