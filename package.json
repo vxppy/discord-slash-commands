@@ -13,7 +13,9 @@
         }
     },
     "files": [
-        "build"
+        "build",
+        "README.md",
+        "LICENSE"
     ],
     "dependencies": {
         "discord-api-types": "^0.38.52"
