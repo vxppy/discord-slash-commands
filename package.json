@@ -1,0 +1,27 @@
+{
+    "name": "@kawaii/slash-commands",
+    "version": "0.0.1",
+    "description": "A simple slash command builder lib",
+    "license": "MIT",
+    "author": "vxppy",
+    "type": "module",
+    "main": "index.js",
+    "exports": {
+        ".": {
+            "import": "./build/index.js",
+            "types": "./build/index.d.ts"
+        }
+    },
+    "files": [
+        "build"
+    ],
+    "dependencies": {
+        "discord-api-types": "^0.38.52"
+    },
+    "peerDependencies": {
+        "discord.js": "^14.27.0"
+    },
+    "devDependencies": {
+        "discord.js": "^14.27.0"
+    }
+}
