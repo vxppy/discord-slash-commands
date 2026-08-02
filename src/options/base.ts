@@ -3,7 +3,7 @@ import type {
     ApplicationCommandOptionType,
 } from 'discord-api-types/v10';
 
-import KawaiiValidationError from '../error.js';
+import VxppyValidationError from '../error.js';
 import type {
     RequiredOptionFields,
     DefaultValue,
@@ -105,14 +105,14 @@ export abstract class BaseChoiceOption<
 
     choices(...choices: ChoiceOption<any>[]): any {
         if (choices.length == 0) {
-            throw new KawaiiValidationError(
+            throw new VxppyValidationError(
                 `Expected at least one choice in option '${this.data.name}'`,
                 this.data.name,
             );
         }
 
         if (choices.length > 25) {
-            throw new KawaiiValidationError(
+            throw new VxppyValidationError(
                 `Too many choices provided for option '${this.data.name}'. (Got: ${choices.length}, Max 25)`,
                 this.data.name,
             );

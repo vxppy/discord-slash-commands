@@ -4,7 +4,7 @@ import {
 } from 'discord-api-types/v10';
 import type { Attachment, Channel, GuildMember, Role, User } from 'discord.js';
 
-import KawaiiValidationError from '../../error.js';
+import VxppyValidationError from '../../error.js';
 import type {
     MakeOption,
     NamedOption,
@@ -276,18 +276,18 @@ export class SubCommand<
         try {
             opt = transform ? transform(option) : option;
         } catch (error) {
-            if (!(error instanceof KawaiiValidationError)) {
+            if (!(error instanceof VxppyValidationError)) {
                 throw error;
             }
 
-            throw new KawaiiValidationError(
+            throw new VxppyValidationError(
                 error.message,
                 `${this.data.name}.${error.path}`,
             );
         }
 
         if (opt.IsRequired && !this.canPushRequired) {
-            throw new KawaiiValidationError(
+            throw new VxppyValidationError(
                 `Caught required option '${opt.Name}' after non-required options in command ${this.Name}`,
                 `${this.data.name}.${opt.Name}`,
             );

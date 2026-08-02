@@ -29,7 +29,7 @@ import type {
     XORIfNotEmpty,
 } from './types/shared.js';
 
-import KawaiiValidationError from './error.js';
+import VxppyValidationError from './error.js';
 import type { ApplicationCommandData } from './options/base.js';
 import { parseOptions } from './parseOptions.js';
 import type {
@@ -73,7 +73,7 @@ type AnyOption =
     | SubCommand<any, any>
     | SubCommandGroup<any>;
 
-export class KawaiiSlashCommand<
+export class VxppySlashCommand<
     TMetadata extends object = {},
     TArgs extends unknown = {},
     TCanHaveRequired extends boolean = true,
@@ -139,7 +139,7 @@ export class KawaiiSlashCommand<
         TOptionMode extends OptionMode = 'root',
         THasDefault extends boolean = false,
     >(
-        this: KawaiiSlashCommand<
+        this: VxppySlashCommand<
             TMetadata,
             TArgs,
             TCanHaveRequired,
@@ -153,7 +153,7 @@ export class KawaiiSlashCommand<
             : StringOption<TValue, false, TOptionMode, THasDefault>,
     ) {
         this.addOption(new StringOption(data), transform);
-        return this as KawaiiSlashCommand<
+        return this as VxppySlashCommand<
             TMetadata,
             Simplify<TArgs & MakeOption<TName, TValue, TRequired, THasDefault>>,
             TCanHaveRequired extends true ? TRequired : false,
@@ -166,7 +166,7 @@ export class KawaiiSlashCommand<
         TRequired extends boolean = false,
         THasDefault extends boolean = false,
     >(
-        this: KawaiiSlashCommand<
+        this: VxppySlashCommand<
             TMetadata,
             TArgs,
             TCanHaveRequired,
@@ -180,7 +180,7 @@ export class KawaiiSlashCommand<
             : BooleanOption<false, THasDefault>,
     ) {
         this.addOption(new BooleanOption(data), transform);
-        return this as KawaiiSlashCommand<
+        return this as VxppySlashCommand<
             TMetadata,
             Simplify<
                 TArgs & MakeOption<TName, boolean, TRequired, THasDefault>
@@ -197,7 +197,7 @@ export class KawaiiSlashCommand<
         TOptionMode extends OptionMode = 'root',
         THasDefault extends boolean = false,
     >(
-        this: KawaiiSlashCommand<
+        this: VxppySlashCommand<
             TMetadata,
             TArgs,
             TCanHaveRequired,
@@ -211,7 +211,7 @@ export class KawaiiSlashCommand<
             : IntegerOption<TValue, false, TOptionMode, THasDefault>,
     ) {
         this.addOption(new IntegerOption(data), transform);
-        return this as KawaiiSlashCommand<
+        return this as VxppySlashCommand<
             TMetadata,
             Simplify<TArgs & MakeOption<TName, TValue, TRequired, THasDefault>>,
             TCanHaveRequired extends true ? TRequired : false,
@@ -224,7 +224,7 @@ export class KawaiiSlashCommand<
         TRequired extends boolean = false,
         THasDefault extends boolean = false,
     >(
-        this: KawaiiSlashCommand<
+        this: VxppySlashCommand<
             TMetadata,
             TArgs,
             TCanHaveRequired,
@@ -238,7 +238,7 @@ export class KawaiiSlashCommand<
             : UserOption<false, THasDefault>,
     ) {
         this.addOption(new UserOption(data), transform);
-        return this as KawaiiSlashCommand<
+        return this as VxppySlashCommand<
             TMetadata,
             Simplify<
                 TArgs &
@@ -259,7 +259,7 @@ export class KawaiiSlashCommand<
         TRequired extends boolean = false,
         THasDefault extends boolean = false,
     >(
-        this: KawaiiSlashCommand<
+        this: VxppySlashCommand<
             TMetadata,
             TArgs,
             TCanHaveRequired,
@@ -273,7 +273,7 @@ export class KawaiiSlashCommand<
             : RoleOption<false, THasDefault>,
     ) {
         this.addOption(new RoleOption(data), transform);
-        return this as KawaiiSlashCommand<
+        return this as VxppySlashCommand<
             TMetadata,
             Simplify<TArgs & MakeOption<TName, Role, TRequired, THasDefault>>,
             TCanHaveRequired extends true ? TRequired : false,
@@ -286,7 +286,7 @@ export class KawaiiSlashCommand<
         TRequired extends boolean = false,
         THasDefault extends boolean = false,
     >(
-        this: KawaiiSlashCommand<
+        this: VxppySlashCommand<
             TMetadata,
             TArgs,
             TCanHaveRequired,
@@ -300,7 +300,7 @@ export class KawaiiSlashCommand<
             : MentionableOption<false, THasDefault>,
     ) {
         this.addOption(new MentionableOption(data), transform);
-        return this as KawaiiSlashCommand<
+        return this as VxppySlashCommand<
             TMetadata,
             Simplify<
                 TArgs &
@@ -321,7 +321,7 @@ export class KawaiiSlashCommand<
         TRequired extends boolean = false,
         THasDefault extends boolean = false,
     >(
-        this: KawaiiSlashCommand<
+        this: VxppySlashCommand<
             TMetadata,
             TArgs,
             TCanHaveRequired,
@@ -335,7 +335,7 @@ export class KawaiiSlashCommand<
             : ChannelOption<false, THasDefault>,
     ) {
         this.addOption(new ChannelOption(data), transform);
-        return this as KawaiiSlashCommand<
+        return this as VxppySlashCommand<
             TMetadata,
             Simplify<
                 TArgs & MakeOption<TName, Channel, TRequired, THasDefault>
@@ -352,7 +352,7 @@ export class KawaiiSlashCommand<
         TOptionMode extends OptionMode = 'root',
         THasDefault extends boolean = false,
     >(
-        this: KawaiiSlashCommand<
+        this: VxppySlashCommand<
             TMetadata,
             TArgs,
             TCanHaveRequired,
@@ -366,7 +366,7 @@ export class KawaiiSlashCommand<
             : NumberOption<TValue, false, TOptionMode, THasDefault>,
     ) {
         this.addOption(new NumberOption(data), transform);
-        return this as KawaiiSlashCommand<
+        return this as VxppySlashCommand<
             TMetadata,
             Simplify<TArgs & MakeOption<TName, TValue, TRequired, THasDefault>>,
             TCanHaveRequired extends true ? TRequired : false,
@@ -378,7 +378,7 @@ export class KawaiiSlashCommand<
         TName extends string,
         TRequired extends boolean = false,
     >(
-        this: KawaiiSlashCommand<
+        this: VxppySlashCommand<
             TMetadata,
             TArgs,
             TCanHaveRequired,
@@ -392,7 +392,7 @@ export class KawaiiSlashCommand<
             : AttachmentOption<false>,
     ) {
         this.addOption(new AttachmentOption(data), transform);
-        return this as KawaiiSlashCommand<
+        return this as VxppySlashCommand<
             TMetadata,
             Simplify<TArgs & MakeOption<TName, Attachment, TRequired, false>>,
             TCanHaveRequired extends true ? TRequired : false,
@@ -405,14 +405,14 @@ export class KawaiiSlashCommand<
         TShape extends {},
         TCanHaveRequired extends boolean = true,
     >(
-        this: KawaiiSlashCommand<TMetadata, TArgs, true, 'root' | 'subcommand'>,
+        this: VxppySlashCommand<TMetadata, TArgs, true, 'root' | 'subcommand'>,
         data: NamedOption<TName>,
         transform?: (
             sub: SubCommand<{}, true>,
         ) => SubCommand<TShape, TCanHaveRequired>,
     ) {
         this.addOption(new SubCommand(data), transform);
-        return this as KawaiiSlashCommand<
+        return this as VxppySlashCommand<
             TMetadata,
             XORIfNotEmpty<TArgs, MakeOption<TName, TShape, true, false>>,
             true,
@@ -421,12 +421,12 @@ export class KawaiiSlashCommand<
     }
 
     addSubCommandGroup<TName extends string, TShape extends {}>(
-        this: KawaiiSlashCommand<TMetadata, any, true, 'root' | 'subcommand'>,
+        this: VxppySlashCommand<TMetadata, any, true, 'root' | 'subcommand'>,
         data: NamedOption<TName>,
         transform?: (group: SubCommandGroup<{}>) => SubCommand<TShape>,
     ) {
         this.addOption(new SubCommandGroup(data), transform);
-        return this as KawaiiSlashCommand<
+        return this as VxppySlashCommand<
             TMetadata,
             XORIfNotEmpty<TArgs, MakeOption<TName, TShape, true, false>>,
             true,
@@ -442,18 +442,18 @@ export class KawaiiSlashCommand<
         try {
             opt = transform ? transform(option) : option;
         } catch (error) {
-            if (!(error instanceof KawaiiValidationError)) {
+            if (!(error instanceof VxppyValidationError)) {
                 throw error;
             }
 
-            throw new KawaiiValidationError(
+            throw new VxppyValidationError(
                 error.message,
                 `${this.data.name}.${error.path}`,
             );
         }
 
         if (opt.IsRequired && !this.canPushRequired) {
-            throw new KawaiiValidationError(
+            throw new VxppyValidationError(
                 `Caught required option '${opt.Name}' after non-required options in command ${this.Name}`,
                 `${this.data.name}.${opt.Name}`,
             );
@@ -474,7 +474,7 @@ export class KawaiiSlashCommand<
 
     toJSON() {
         if (!this.data.description) {
-            throw new KawaiiValidationError(
+            throw new VxppyValidationError(
                 `Name not found for command 'unknown'`,
                 'unknown',
                 true,
@@ -482,7 +482,7 @@ export class KawaiiSlashCommand<
         }
 
         if (!this.data.description) {
-            throw new KawaiiValidationError(
+            throw new VxppyValidationError(
                 `Description not found for command ${this.data.name}`,
                 this.data.name,
                 true,
@@ -502,5 +502,5 @@ export const slashCommand = <
     name: string;
     description: string;
 }) => {
-    return new KawaiiSlashCommand<TMetadata>(data);
+    return new VxppySlashCommand<TMetadata>(data);
 };
