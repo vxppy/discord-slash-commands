@@ -129,18 +129,14 @@ export class SubCommand<
         >;
     }
 
-    addUserOption<
-        TName extends string,
-        TRequired extends boolean = false,
-        THasDefault extends boolean = false,
-    >(
+    addUserOption<TName extends string, TRequired extends boolean = false>(
         this: SubCommand<TArgs, TCanHaveRequired>,
         data: NamedOption<TName>,
         transform?: (
             option: UserOption<false, false>,
         ) => TCanHaveRequired extends true
-            ? UserOption<TRequired, THasDefault>
-            : UserOption<false, THasDefault>,
+            ? UserOption<TRequired, boolean>
+            : UserOption<false, boolean>,
     ) {
         this.addOption(new UserOption(data), transform);
         return this as SubCommand<
@@ -150,51 +146,41 @@ export class SubCommand<
                         TName,
                         { user: User; member?: GuildMember },
                         TRequired,
-                        THasDefault
+                        false
                     >
             >,
             TCanHaveRequired extends true ? TRequired : false
         >;
     }
 
-    addChannelOption<
-        TName extends string,
-        TRequired extends boolean = false,
-        THasDefault extends boolean = false,
-    >(
+    addChannelOption<TName extends string, TRequired extends boolean = false>(
         this: SubCommand<TArgs, TCanHaveRequired>,
         data: NamedOption<TName>,
         transform?: (
             option: ChannelOption<false, false>,
         ) => TCanHaveRequired extends true
-            ? ChannelOption<TRequired, THasDefault>
-            : ChannelOption<false, THasDefault>,
+            ? ChannelOption<TRequired, boolean>
+            : ChannelOption<false, boolean>,
     ) {
         this.addOption(new ChannelOption(data), transform);
         return this as SubCommand<
-            Simplify<
-                TArgs & MakeOption<TName, Channel, TRequired, THasDefault>
-            >,
+            Simplify<TArgs & MakeOption<TName, Channel, TRequired, false>>,
             TCanHaveRequired extends true ? TRequired : false
         >;
     }
 
-    addRoleOption<
-        TName extends string,
-        TRequired extends boolean = false,
-        THasDefault extends boolean = false,
-    >(
+    addRoleOption<TName extends string, TRequired extends boolean = false>(
         this: SubCommand<TArgs, TCanHaveRequired>,
         data: NamedOption<TName>,
         transform?: (
             option: RoleOption<false, false>,
         ) => TCanHaveRequired extends true
-            ? RoleOption<TRequired, THasDefault>
-            : RoleOption<false, THasDefault>,
+            ? RoleOption<TRequired, boolean>
+            : RoleOption<false, boolean>,
     ) {
         this.addOption(new RoleOption(data), transform);
         return this as SubCommand<
-            Simplify<TArgs & MakeOption<TName, Role, TRequired, THasDefault>>,
+            Simplify<TArgs & MakeOption<TName, Role, TRequired, false>>,
             TCanHaveRequired extends true ? TRequired : false
         >;
     }
@@ -202,15 +188,14 @@ export class SubCommand<
     addMentionableOption<
         TName extends string,
         TRequired extends boolean = false,
-        THasDefault extends boolean = false,
     >(
         this: SubCommand<TArgs, TCanHaveRequired>,
         data: NamedOption<TName>,
         transform?: (
             option: MentionableOption<false, false>,
         ) => TCanHaveRequired extends true
-            ? MentionableOption<TRequired, THasDefault>
-            : MentionableOption<false, THasDefault>,
+            ? MentionableOption<TRequired, boolean>
+            : MentionableOption<false, boolean>,
     ) {
         this.addOption(new MentionableOption(data), transform);
         return this as SubCommand<
@@ -220,7 +205,7 @@ export class SubCommand<
                         TName,
                         { user?: User; member?: GuildMember; role?: Role },
                         TRequired,
-                        THasDefault
+                        false
                     >
             >,
             TCanHaveRequired extends true ? TRequired : false

@@ -219,11 +219,7 @@ export class VxppySlashCommand<
         >;
     }
 
-    addUserOption<
-        TName extends string,
-        TRequired extends boolean = false,
-        THasDefault extends boolean = false,
-    >(
+    addUserOption<TName extends string, TRequired extends boolean = false>(
         this: VxppySlashCommand<
             TMetadata,
             TArgs,
@@ -234,8 +230,8 @@ export class VxppySlashCommand<
         transform?: (
             option: UserOption<false, false>,
         ) => TCanHaveRequired extends true
-            ? UserOption<TRequired, THasDefault>
-            : UserOption<false, THasDefault>,
+            ? UserOption<TRequired, boolean>
+            : UserOption<false, boolean>,
     ) {
         this.addOption(new UserOption(data), transform);
         return this as VxppySlashCommand<
@@ -246,7 +242,7 @@ export class VxppySlashCommand<
                         TName,
                         { user: User; member?: GuildMember },
                         TRequired,
-                        THasDefault
+                        false
                     >
             >,
             TCanHaveRequired extends true ? TRequired : false,
@@ -254,11 +250,7 @@ export class VxppySlashCommand<
         >;
     }
 
-    addRoleOption<
-        TName extends string,
-        TRequired extends boolean = false,
-        THasDefault extends boolean = false,
-    >(
+    addRoleOption<TName extends string, TRequired extends boolean = false>(
         this: VxppySlashCommand<
             TMetadata,
             TArgs,
@@ -269,13 +261,13 @@ export class VxppySlashCommand<
         transform?: (
             option: RoleOption<false, false>,
         ) => TCanHaveRequired extends true
-            ? RoleOption<TRequired, THasDefault>
-            : RoleOption<false, THasDefault>,
+            ? RoleOption<TRequired, boolean>
+            : RoleOption<false, boolean>,
     ) {
         this.addOption(new RoleOption(data), transform);
         return this as VxppySlashCommand<
             TMetadata,
-            Simplify<TArgs & MakeOption<TName, Role, TRequired, THasDefault>>,
+            Simplify<TArgs & MakeOption<TName, Role, TRequired, false>>,
             TCanHaveRequired extends true ? TRequired : false,
             'options'
         >;
@@ -284,7 +276,6 @@ export class VxppySlashCommand<
     addMentionableOption<
         TName extends string,
         TRequired extends boolean = false,
-        THasDefault extends boolean = false,
     >(
         this: VxppySlashCommand<
             TMetadata,
@@ -296,8 +287,8 @@ export class VxppySlashCommand<
         transform?: (
             option: MentionableOption<false, false>,
         ) => TCanHaveRequired extends true
-            ? MentionableOption<TRequired, THasDefault>
-            : MentionableOption<false, THasDefault>,
+            ? MentionableOption<TRequired, boolean>
+            : MentionableOption<false, boolean>,
     ) {
         this.addOption(new MentionableOption(data), transform);
         return this as VxppySlashCommand<
@@ -308,7 +299,7 @@ export class VxppySlashCommand<
                         TName,
                         { user?: User; member?: GuildMember; role?: Role },
                         TRequired,
-                        THasDefault
+                        false
                     >
             >,
             TCanHaveRequired extends true ? TRequired : false,
@@ -316,11 +307,7 @@ export class VxppySlashCommand<
         >;
     }
 
-    addChannelOption<
-        TName extends string,
-        TRequired extends boolean = false,
-        THasDefault extends boolean = false,
-    >(
+    addChannelOption<TName extends string, TRequired extends boolean = false>(
         this: VxppySlashCommand<
             TMetadata,
             TArgs,
@@ -331,15 +318,13 @@ export class VxppySlashCommand<
         transform?: (
             option: ChannelOption<false, false>,
         ) => TCanHaveRequired extends true
-            ? ChannelOption<TRequired, THasDefault>
-            : ChannelOption<false, THasDefault>,
+            ? ChannelOption<TRequired, boolean>
+            : ChannelOption<false, boolean>,
     ) {
         this.addOption(new ChannelOption(data), transform);
         return this as VxppySlashCommand<
             TMetadata,
-            Simplify<
-                TArgs & MakeOption<TName, Channel, TRequired, THasDefault>
-            >,
+            Simplify<TArgs & MakeOption<TName, Channel, TRequired, false>>,
             TCanHaveRequired extends true ? TRequired : false,
             'options'
         >;
