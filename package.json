@@ -1,6 +1,6 @@
 {
     "name": "@vxppy/discord-slash-commands",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "A simple slash command builder lib",
     "license": "MIT",
     "author": "vxppy",
